@@ -12,7 +12,7 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
 
     return (
         <div className={'restaurant ' + className}>
-            <div className={'img'} />
+            <img src={restaurant.photo} className={'img'} />
             <div className={'rating'}>{restaurant.rating}</div>
             <div className={'rating'}>{restaurant.kitchenTypes}</div>
             <div className={'name'}>{restaurant.name}</div>
