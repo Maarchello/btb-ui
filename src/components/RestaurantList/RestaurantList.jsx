@@ -19,9 +19,10 @@ const RestaurantList = () => {
 
     return (
         <div className={'list'}>
+            ProductList
 
             {restaurants.map(item => {
-                <RestaurantItem
+                return <RestaurantItem
                     restaurant={item}
                     onMenu={onMenu}
                     onBook={onBook}
