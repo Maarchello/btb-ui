@@ -3,7 +3,7 @@
     flex-direction: column;
     border: 1px solid var(--tg-theme-button-color);
     padding: 15px;
-    width: 170px;
+    width: 80%;
 }
 
 .img {
@@ -18,6 +18,12 @@
     font-size: 0.8em;
 }
 
-.add-btn {
+.btn-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
     width: 100%;
+    margin: 15px;
 }

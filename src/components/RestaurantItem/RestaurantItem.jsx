@@ -16,12 +16,15 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
             <div className={'rating'}>{restaurant.rating}</div>
             <div className={'rating'}>{restaurant.kitchenTypes}</div>
             <div className={'name'}>{restaurant.name}</div>
-            <Button className={'add-btn'} onClick={onMenuHandler}>
-                Меню
-            </Button>
-            <Button className={'add-btn'} onClick={onBookHandler}>
-                Забронировать
-            </Button>
+            <div className={'btn-block'}>
+                <Button className={'btn'} onClick={onMenuHandler}>
+                    Меню
+                </Button>
+                <Button className={'btn'} onClick={onBookHandler}>
+                    Забронировать
+                </Button>
+            </div>
+
         </div>
     );
 };
