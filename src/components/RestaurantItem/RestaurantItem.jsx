@@ -22,7 +22,7 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
     const itemClassName = tg.colorScheme;
 
     return (
-        <div className={`main restaurant-${itemClassName}` + className}>
+        <div className={`main restaurant-${itemClassName} ` + className}>
             <img src={restaurant.photo} className={'img'} />
             <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div>
             <div className={'rest-name'}>{restaurant.name}</div>
