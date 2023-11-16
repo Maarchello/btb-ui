@@ -1,10 +1,15 @@
 import React from 'react';
 import Button from "../Button/Button";
 import './RestaurantItem.css'
+import { useNavigate } from 'react-router-dom';
+
+
 const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
 
+    const navigate = useNavigate();
+
     const onMenuHandler = () => {
-        onMenu(restaurant.id)
+        navigate(`/menu/${restaurant.id}`)
     }
     const onBookHandler = () => {
         onBook(restaurant.id);
@@ -13,9 +18,8 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
     return (
         <div className={'restaurant ' + className}>
             <img src={restaurant.photo} className={'img'} />
-            <div className={'rating'}>{restaurant.rating}</div>
-            <div className={'rating'}>{restaurant.kitchenTypes}</div>
-            <div className={'name'}>{restaurant.name}</div>
+            <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div>
+            <div className={'rest-name'}>{restaurant.name}</div>
             <div className={'btn-block'}>
                 <Button className={'btn'} onClick={onMenuHandler}>
                     Меню

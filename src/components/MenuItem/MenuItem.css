@@ -1,9 +1,8 @@
-.restaurant {
+.item {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--tg-theme-button-color);
     padding: 15px;
-    width: 90%;
 }
 
 .img {
@@ -12,22 +11,4 @@
     height: 100px;
     margin: 0 auto;
     background: var(--tg-theme-button-color);
-}
-
-.description {
-    font-size: 0.8em;
-}
-
-.btn-block {
-    display: flex;
-    flex-direction: row;
-}
-
-.btn {
-    width: 100%;
-    margin: 15px;
-}
-
-.rest-name {
-    font-weight: bold;
 }
