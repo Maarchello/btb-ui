@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from "../Button/Button";
 import './RestaurantItem.css'
+import '../../Common.css'
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,7 +18,7 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
     }
 
     return (
-        <div className={'restaurant ' + className}>
+        <div className={'main restaurant ' + className}>
             <img src={restaurant.photo} className={'img'} />
             <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div>
             <div className={'rest-name'}>{restaurant.name}</div>

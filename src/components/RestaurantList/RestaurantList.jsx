@@ -1,5 +1,6 @@
 import React from 'react';
 import './RestaurantList.css'
+import '../../Common.css'
 import RestaurantItem from "../RestaurantItem/RestaurantItem";
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ const RestaurantList = () => {
     }
 
     return (
-        <div className={'list'}>
+        <div className={'main list'}>
             {restaurants.map(item => {
                 return <RestaurantItem
                     restaurant={item}

@@ -1,5 +1,7 @@
 import React from 'react';
 import './MenuList.css'
+import '../../Common.css'
+
 import RestaurantItem from "../RestaurantItem/RestaurantItem";
 import MenuItem from "../MenuItem/MenuItem";
 import { useParams } from 'react-router-dom';
@@ -69,7 +71,7 @@ const MenuList = () => {
 
 
     return (
-        <div className={'list'}>
+        <div className={'main list'}>
             {menuItems
                 .filter((el) => {
                     return el.restId === parseInt(restId);

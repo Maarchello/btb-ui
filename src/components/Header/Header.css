@@ -4,8 +4,9 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-}
-
-.username {
-    margin-left: auto;
+    position: fixed;
+    overflow: hidden;
+    background: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    top: 0;
 }
