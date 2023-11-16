@@ -4,11 +4,13 @@ import './RestaurantItem.css'
 import '../../Common.css'
 
 import { useNavigate } from 'react-router-dom';
+import {useTelegram} from "../../hooks/useTelegram";
 
 
 const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
 
     const navigate = useNavigate();
+    const {tg} = useTelegram();
 
     const onMenuHandler = () => {
         navigate(`/menu/${restaurant.id}`)
@@ -17,8 +19,10 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
         onBook(restaurant.id);
     }
 
+    const itemClassName = tg.colorScheme;
+
     return (
-        <div className={'main restaurant ' + className}>
+        <div className={`main restaurant-${itemClassName}` + className}>
             <img src={restaurant.photo} className={'img'} />
             <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div>
             <div className={'rest-name'}>{restaurant.name}</div>

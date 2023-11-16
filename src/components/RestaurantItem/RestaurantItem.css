@@ -1,9 +1,22 @@
-.restaurant {
+.restaurant-dark {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--tg-theme-button-color);
+    border-radius: 15px;
+    background: #304050;
     padding: 15px;
     width: 90%;
+    color: var(--tg-theme-text-color);
+}
+
+.restaurant-light {
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid var(--tg-theme-button-color);*/
+    background: #a2b2b6;
+    padding: 15px;
+    width: 90%;
+    color: var(--tg-theme-text-color);
 }
 
 .img {
