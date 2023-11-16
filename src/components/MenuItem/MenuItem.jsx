@@ -6,14 +6,12 @@ import {useTelegram} from "../../hooks/useTelegram";
 const MenuItem = ({menuItem, className}) => {
 
     const {tg} = useTelegram();
-    const itemClassName = tg.colorScheme;
-
 
     return (
-        <div className={`item-${itemClassName} ` + className}>
+        <div className={`item-${tg.colorScheme} ` + className}>
             <img src={menuItem.photo} className={'img'} />
-            <div className={'font-face-hussar'}>{menuItem.name}</div>
-            <div>{menuItem.price} ₽</div>
+            <div className={'font-face-hussar'}>{menuItem.name}</div><br/>
+            <div className={'price'}>{menuItem.price} ₽</div>
             {/*<div className={'btn-block'}>*/}
             {/*    <Button className={'btn'} onClick={onMenuHandler}>*/}
             {/*        Меню*/}

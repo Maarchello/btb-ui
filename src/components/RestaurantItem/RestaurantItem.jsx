@@ -19,10 +19,8 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
         onBook(restaurant.id);
     }
 
-    const itemClassName = tg.colorScheme;
-
     return (
-        <div className={`main restaurant-${itemClassName} ` + className}>
+        <div className={`restaurant-${tg.colorScheme} ` + className}>
             <img src={restaurant.photo} className={'img'} />
             <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div><br/>
             <div className={'rest-name'}>{restaurant.name}</div>

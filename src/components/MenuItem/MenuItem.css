@@ -27,3 +27,7 @@
     /*margin: 0 auto;*/
     background: var(--tg-theme-button-color);
 }
+
+.price {
+    font-weight: bold;
+}
