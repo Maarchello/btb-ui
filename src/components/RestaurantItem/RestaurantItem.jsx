@@ -24,7 +24,7 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
     return (
         <div className={`main restaurant-${itemClassName} ` + className}>
             <img src={restaurant.photo} className={'img'} />
-            <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div>
+            <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div><br/>
             <div className={'rest-name'}>{restaurant.name}</div>
             <div className={'btn-block'}>
                 <Button className={'btn'} onClick={onMenuHandler}>
