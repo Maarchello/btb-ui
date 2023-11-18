@@ -43,7 +43,7 @@ const Booking = () => {
 
                 <div className={'booking-date'}>
 
-                    <MobileDatePicker slotProps={{textField: {size: 'small'}}} label={'Выберите день'}/>
+                    <MobileDatePicker disablePast={true} slotProps={{textField: {size: 'small'}}} label={'Выберите день'}/>
                     <MobileTimePicker label={'Выберите время начала'} ampm={false}
                                       slotProps={{textField: {size: 'small'}}}/>
                 </div>
@@ -51,7 +51,7 @@ const Booking = () => {
 
                 <div className={'duration'}>
                     <div>
-                        <FormControl disabled={checked} fullWidth style={{minWidth: 300}}>
+                        <FormControl className={'btn'} disabled={checked} fullWidth style={{minWidth: 250}}>
                             <InputLabel id="duration-select-label">Продолжительность в часах</InputLabel>
                             <Select
                                 labelId="duration-select-label"

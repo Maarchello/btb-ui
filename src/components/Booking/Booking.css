@@ -1,8 +1,17 @@
-.container {
+.container-dark {
     display: flex;
     flex-direction: column;
     gap: 30px;
     padding: 10px;
+    color: var(--tg-theme-text-color);
+}
+
+.container-light {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+    color: var(--tg-theme-text-color);
 }
 
 .b1 {

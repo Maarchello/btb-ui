@@ -24,3 +24,11 @@ img {
     display: flex;
     flex-direction: row;
 }
+
+
+.restaurant-light {
+    background: #ecf6f0;
+    padding: 15px;
+    width: 100%;
+    color: var(--tg-theme-text-color);
+}
