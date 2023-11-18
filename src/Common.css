@@ -1,3 +1,26 @@
 .main {
     margin-top: 50px;
 }
+
+img {
+    border-radius: 15px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.datepicker {
+
+    border-radius: 7px;
+}
+
+.btn {
+    width: 100%;
+    margin: 15px;
+}
+
+.btn-block {
+    display: flex;
+    flex-direction: row;
+}

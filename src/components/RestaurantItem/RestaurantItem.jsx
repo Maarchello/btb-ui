@@ -13,17 +13,17 @@ const RestaurantItem = ({restaurant, className, onMenu, onBook}) => {
     const {tg} = useTelegram();
 
     const onMenuHandler = () => {
-        navigate(`/menu/${restaurant.id}`)
+        navigate(`/menu/${restaurant.id}`);
     }
     const onBookHandler = () => {
-        onBook(restaurant.id);
+        navigate(`/booking/${restaurant.id}`);
     }
 
     return (
         <div className={`restaurant-${tg.colorScheme} ` + className}>
             <img src={restaurant.photo} className={'img'} />
             <div className={'rating font-face-hussar'}>⭐ {restaurant.rating}, {restaurant.shortInfo}</div><br/>
-            <div className={'rest-name'}>{restaurant.name}</div>
+            <div className={'bold'}>{restaurant.name}</div>
             <div className={'btn-block'}>
                 <Button className={'btn'} onClick={onMenuHandler}>
                     Меню

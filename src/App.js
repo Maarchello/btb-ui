@@ -7,6 +7,7 @@ import {Route, Routes} from 'react-router-dom'
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import Form from "./components/Form/Form";
 import MenuList from "./components/MenuList/MenuList";
+import Booking from "./components/Booking/Booking";
 
 function App() {
     const {tg, onToggleButton} = useTelegram();
@@ -22,7 +23,7 @@ function App() {
             <Route index element={<RestaurantList/>} />
             <Route path={'form'} element={<Form/>} />
             <Route path={'menu/:restId'} element={<MenuList/>} />
-            {/*<Route path={'menu-'} element={<MenuList/>} />*/}
+            <Route path={'booking/:restId'} element={<Booking/>} />
         </Routes>
     </div>
   );

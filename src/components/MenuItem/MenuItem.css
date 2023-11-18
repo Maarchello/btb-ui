@@ -29,5 +29,12 @@
 }
 
 .price {
+    text-align: right;
+    color: #14b914;
+    font-size: 2em;
     font-weight: bold;
+}
+
+.item-name {
+    font-size: 1.2em;
 }

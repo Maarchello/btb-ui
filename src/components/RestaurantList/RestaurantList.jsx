@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './RestaurantList.css'
 import '../../Common.css'
 import RestaurantItem from "../RestaurantItem/RestaurantItem";
@@ -12,6 +12,7 @@ const restaurants = [
 const RestaurantList = () => {
 
     const navigate = useNavigate();
+    // const {restaurants, setRestaurants} = useState(restaurants);
     const onMenu = (restId) => {
         console.log(restId);
         navigate(`/menu/${restId}`)
