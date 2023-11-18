@@ -9,6 +9,7 @@ import {ruRU} from '@mui/x-date-pickers/locales';
 import "dayjs/locale/ru";
 import {FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, Switch, TextField} from "@mui/material";
 import Button from "../Button/Button";
+import {useTelegram} from "../../hooks/useTelegram";
 // import {NumberInput} from "../DurationPicker";
 
 const Booking = () => {
@@ -21,11 +22,14 @@ const Booking = () => {
         setChecked(!checked);
     };
 
+    const {tg} = useTelegram();
+
+
     return (
         <LocalizationProvider adapterLocale={'ru'}
                               localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}
                               dateAdapter={AdapterDayjs}>
-            <div className={'container main'}>
+            <div className={`container-${tg.colorScheme} main`}>
                 <div className={'b1'}>
                     <img
                         src={'https://img.restoclub.ru/uploads/place/6/b/1/7/6b177ade39bfcf9670ca0471cc2e76c3_w958_h835--big.webp'}
