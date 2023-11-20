@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:8080';
+// const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://09ef-92-100-177-16.ngrok-free.app';
 
 export function getRestaurants(callback) {
     fetch(`${baseUrl}/api/restaurants`)
