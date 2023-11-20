@@ -6,7 +6,7 @@ const MenuItem = ({menuItem, className}) => {
 
     return (
         <div>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ minWidth: 345 }}>
                 <CardMedia
                     component="img"
                     height="140"
