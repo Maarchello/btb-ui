@@ -54,3 +54,11 @@ export function doBooking(requestBody, callback) {
         .then(res => callback());
 }
 
+
+export function getRestaurantLocation(restaurantId, chatId, callback) {
+    console.log(restaurantId);
+    console.log(chatId);
+
+    fetch(`${baseUrl}/api/restaurants/${restaurantId}/location?chatId=170474633`, requestOptions)
+        .then(res => callback());
+}

@@ -18,6 +18,7 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import {ExpandMore} from "@mui/icons-material";
 import {IconButtonProps} from "@mui/material";
+import {getRestaurantLocation} from "../../service/ApiService";
 
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
@@ -38,7 +39,7 @@ interface ExpandMoreProps extends IconButtonProps {
 const RestaurantItem = ({restaurant, className}) => {
 
     const navigate = useNavigate();
-    const {tg} = useTelegram();
+    const {onClose, user} = useTelegram();
 
     const onMenuHandler = () => {
         navigate(`/menu/${restaurant.id}`);
@@ -52,6 +53,8 @@ const RestaurantItem = ({restaurant, className}) => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const onAddressClick = () => getRestaurantLocation(restaurant.id, user?.id, onClose);
 
     return (
 
@@ -68,8 +71,10 @@ const RestaurantItem = ({restaurant, className}) => {
                         {restaurant.name}, {restaurant.shortDescription}
                     </Typography>
                     <Typography sx={{mb: 1.5}} color="text.secondary">
-                        ⭐ {restaurant.rating} <br/>
-                        Ⓜ️️ {restaurant.nearMetro}
+                        Ⓜ️️ {restaurant.nearMetro}<br/>
+                        <span onClick={onAddressClick}>📍 <u>{restaurant.address.fullStreet}</u></span><br/>
+                        ⭐ {restaurant.rating}<br/>
+                        💸 Средний чек {restaurant.averageBill} ₽
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
