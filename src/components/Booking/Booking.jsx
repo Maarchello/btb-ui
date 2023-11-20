@@ -9,7 +9,8 @@ import {ruRU} from '@mui/x-date-pickers/locales';
 import "dayjs/locale/ru";
 import {FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, Switch, TextField} from "@mui/material";
 import Button from "../Button/Button";
-import {getRestaurantById} from "../../service/ApiService";
+import {doBooking, getRestaurantById} from "../../service/ApiService";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const Booking = () => {
 
@@ -20,12 +21,15 @@ const Booking = () => {
     const [startTime, setStartTime] = useState(new Date());
     const [duration, setDuration] = useState(null);
     const [guestCount, setGuestCount] = useState(null);
+    const [comment, setComment] = useState(null);
     const [checked, setChecked] = useState(false);
 
     const [rest, setRest] = useState({address: {}});
     const handleChange = () => {
         setChecked(!checked);
     };
+
+    const {tg, onClose} = useTelegram();
 
     useEffect(() => {
         getRestaurantById(restId, (data) => setRest(data))
@@ -128,25 +132,25 @@ const Booking = () => {
 
 
                 <div>
-                    <TextField fullWidth={true} id="standard-basic"
+                    <TextField onChange={(v) => setComment(v.target.value)} fullWidth={true} id="standard-basic"
                                label="Напишите, что важно учесть"
                                variant="standard" />
                 </div>
 
                 <Button className={'btn'} onClick={() => {
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            restId: restId,
-                            date: startDate,
-                            time: startTime,
-                            duration: duration,
-                        })
+                    const requestBody = {
+                        // charId: tg.initDataUnsafe?.chat?.id,
+                        chatId: 170474633,
+                        restaurantId: restId,
+                        day: startDate,
+                        time: startTime,
+                        duration: duration,
+                        comment: comment,
+                        guestCount: guestCount
                     };
 
-                    fetch('http://localhost:8080/api/bookings', requestOptions)
-                        .then(res => console.log(res));
+                    console.log(requestBody);
+                    doBooking(requestBody, onClose);
 
                 }}>Забронировать</Button>
 
