@@ -139,7 +139,7 @@ const Booking = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        userId: user?.id,
+                        chatId: user?.id,
                         restaurantId: restId,
                         day: startDate,
                         time: startTime,
