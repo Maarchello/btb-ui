@@ -48,7 +48,7 @@ const Booking = () => {
                               localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}
                               dateAdapter={AdapterDayjs}>
 
-            <div className={`container-${tg.colorScheme} main`}>
+            <div className={`container main`}>
                 <div className={'b1'}>
                     <img
                         src={rest.photo}
