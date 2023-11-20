@@ -59,6 +59,6 @@ export function getRestaurantLocation(restaurantId, chatId, callback) {
     console.log(restaurantId);
     console.log(chatId);
 
-    fetch(`${baseUrl}/api/restaurants/${restaurantId}/location?chatId=170474633`, requestOptions)
+    fetch(`${baseUrl}/api/restaurants/${restaurantId}/location?chatId=${chatId}`, requestOptions)
         .then(res => callback());
 }
