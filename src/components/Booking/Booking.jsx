@@ -29,7 +29,7 @@ const Booking = () => {
         setChecked(!checked);
     };
 
-    const {tg, onClose} = useTelegram();
+    const {tg, user, onClose} = useTelegram();
 
     useEffect(() => {
         getRestaurantById(restId, (data) => setRest(data))
@@ -139,7 +139,7 @@ const Booking = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        userId: tg.initDataUnsafe?.user?.id,
+                        userId: user?.id,
                         restaurantId: restId,
                         day: startDate,
                         time: startTime,
