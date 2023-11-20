@@ -17,6 +17,17 @@ export function getRestaurants(callback) {
     });
 }
 
+export function getRestaurantById(restaurantId, callback) {
+    fetch(`${baseUrl}/api/restaurants/${restaurantId}`, requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+            callback(data);
+        }).catch((err) => {
+        console.log('catch request error');
+        console.log(err);
+    });
+}
+
 export function getMenuItems(restaurantId, callback) {
     fetch(`${baseUrl}/api/restaurants/${restaurantId}/menu`, requestOptions)
         .then((res) => res.json())
@@ -27,3 +38,4 @@ export function getMenuItems(restaurantId, callback) {
         console.log(err);
     });
 }
+

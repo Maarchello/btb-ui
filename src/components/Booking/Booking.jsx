@@ -9,8 +9,7 @@ import {ruRU} from '@mui/x-date-pickers/locales';
 import "dayjs/locale/ru";
 import {FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, Switch, TextField} from "@mui/material";
 import Button from "../Button/Button";
-import {useTelegram} from "../../hooks/useTelegram";
-// import {NumberInput} from "../DurationPicker";
+import {getRestaurantById} from "../../service/ApiService";
 
 const Booking = () => {
 
@@ -28,18 +27,8 @@ const Booking = () => {
         setChecked(!checked);
     };
 
-    const {tg} = useTelegram();
-
     useEffect(() => {
-        fetch(`http://localhost:8080/api/restaurants/${restId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                setRest(data);
-            }).catch((err) => {
-            console.log('catch request error');
-            console.log(err);
-        });
+        getRestaurantById(restId, (data) => setRest(data))
     }, []);
 
 
