@@ -139,7 +139,7 @@ const Booking = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        chatId: tg.initDataUnsafe?.chat?.id,
+                        userId: tg.initDataUnsafe?.user?.id,
                         restaurantId: restId,
                         day: startDate,
                         time: startTime,
