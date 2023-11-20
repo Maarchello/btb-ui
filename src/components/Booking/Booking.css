@@ -4,6 +4,9 @@
     gap: 30px;
     padding: 10px;
     color: var(--tg-theme-text-color);
+    background: #293642;
+    border: 1px solid #293642;
+
 }
 
 .container-light {

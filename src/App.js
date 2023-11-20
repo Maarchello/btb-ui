@@ -1,5 +1,5 @@
 import './App.css';
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
@@ -8,6 +8,7 @@ import RestaurantList from "./components/RestaurantList/RestaurantList";
 import Form from "./components/Form/Form";
 import MenuList from "./components/MenuList/MenuList";
 import Booking from "./components/Booking/Booking";
+import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 
 function App() {
     const {tg, onToggleButton} = useTelegram();
@@ -16,15 +17,27 @@ function App() {
         tg.ready();
     }, []);
 
+    const theme = createTheme({
+        palette: {
+            mode: tg.colorScheme,
+        },
+    })
+
   return (
     <div className="App">
-        <Header/>
-        <Routes>
-            <Route index element={<RestaurantList/>} />
-            <Route path={'form'} element={<Form/>} />
-            <Route path={'menu/:restId'} element={<MenuList/>} />
-            <Route path={'booking/:restId'} element={<Booking/>} />
-        </Routes>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+
+            <Header/>
+            <Routes>
+                <Route index element={<RestaurantList/>} />
+                <Route path={'form'} element={<Form/>} />
+                <Route path={'menu/:restId'} element={<MenuList/>} />
+                <Route path={'booking/:restId'} element={<Booking/>} />
+            </Routes>
+
+        </ThemeProvider>
+
     </div>
   );
 }

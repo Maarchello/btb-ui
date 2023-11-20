@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Booking.css';
 import '../../Common.css'
 
@@ -15,31 +15,51 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Booking = () => {
 
     const {restId} = useParams();
+
+
     const [startDate, setStartDate] = useState(new Date());
-    const [startTime, setStartTime] = useState("10:00");
+    const [startTime, setStartTime] = useState(new Date());
+    const [duration, setDuration] = useState(null);
+    const [guestCount, setGuestCount] = useState(null);
     const [checked, setChecked] = useState(false);
+
+    const [rest, setRest] = useState({address: {}});
     const handleChange = () => {
         setChecked(!checked);
     };
 
     const {tg} = useTelegram();
 
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/restaurants/${restId}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                setRest(data);
+            }).catch((err) => {
+            console.log('catch request error');
+            console.log(err);
+        });
+    }, []);
+
 
     return (
         <LocalizationProvider adapterLocale={'ru'}
                               localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}
                               dateAdapter={AdapterDayjs}>
+
             <div className={`container-${tg.colorScheme} main`}>
                 <div className={'b1'}>
                     <img
-                        src={'https://img.restoclub.ru/uploads/place/6/b/1/7/6b177ade39bfcf9670ca0471cc2e76c3_w958_h835--big.webp'}
+                        src={rest.photo}
                         width={'100px'} height={'100px'}/>
 
                     <div className={'name-and-street'}>
 
-                        <div className={'bold'}>Name</div>
-                        <div>ул. Мира, 1, Центральный внутригородской округ</div>
-                        <div>Время работы 12:00 - 01:00</div>
+                        <div className={'bold'}>{rest.name}</div>
+                        <div>{rest.address.city}, {rest.address.fullStreet}</div>
+                        <div>Ⓜ️️{rest.nearMetro}</div>
+                        <div><strong>Время работы</strong> {rest.openingHours}</div>
 
                     </div>
 
@@ -47,26 +67,36 @@ const Booking = () => {
 
                 <div className={'booking-date'}>
 
-                    <MobileDatePicker disablePast={true} slotProps={{textField: {size: 'small'}}} label={'Выберите день'}/>
-                    <MobileTimePicker label={'Выберите время начала'} ampm={false}
+                    <MobileDatePicker format={'DD-MM-YYYY'}
+                                      onChange={(d) => setStartDate(d)}
+                                      disablePast={true}
+                                      slotProps={{textField: {size: 'small'}}}
+                                      label={'Выберите день'}/>
+
+                    <MobileTimePicker onChange={(t) => setStartTime(t)}
+                                      // minTime={dayjs().set('hour', 12).set('minute', 0)}
+                                      // maxTime={dayjs().set('hour', 23).set('minute', 59)}
+                                      label={'Выберите время начала'}
+                                      ampm={false}
                                       slotProps={{textField: {size: 'small'}}}/>
                 </div>
 
 
                 <div className={'duration'}>
                     <div>
-                        <FormControl className={'btn'} disabled={checked} fullWidth style={{minWidth: 250}}>
-                            <InputLabel id="duration-select-label">Продолжительность в часах</InputLabel>
+                        <FormControl disabled={checked} fullWidth style={{minWidth: 200}}>
+                            <InputLabel id="duration-select-label">Продолжительность</InputLabel>
                             <Select
+                                onChange={(v) => setDuration(v.target.value)}
                                 labelId="duration-select-label"
                                 id="duration-select"
                                 label="Продолжительность в часах">
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={6}>6</MenuItem>
+                                <MenuItem value={1}>1ч</MenuItem>
+                                <MenuItem value={2}>2ч</MenuItem>
+                                <MenuItem value={3}>3ч</MenuItem>
+                                <MenuItem value={4}>4ч</MenuItem>
+                                <MenuItem value={5}>5ч</MenuItem>
+                                <MenuItem value={6}>6ч</MenuItem>
                             </Select>
                         </FormControl>
                     </div>
@@ -85,10 +115,11 @@ const Booking = () => {
 
                 <div className={'guest-count'}>
                     <FormControl fullWidth>
-                        <InputLabel id="duration-select-label">Количество гостей</InputLabel>
+                        <InputLabel id="guest-count-select-label">Количество гостей</InputLabel>
                         <Select
-                            labelId="duration-select-label"
-                            id="duration-select"
+                            onChange={(v) => setGuestCount(v.target.value)}
+                            labelId="guest-count-select-label"
+                            id="guest-count-select"
                             label="Количество гостей">
                             <MenuItem value={1}>1</MenuItem>
                             <MenuItem value={2}>2</MenuItem>
@@ -100,7 +131,7 @@ const Booking = () => {
                             <MenuItem value={8}>8</MenuItem>
                             <MenuItem value={9}>9</MenuItem>
                             <MenuItem value={10}>10</MenuItem>
-                            <MenuItem value={-1}>Больше 10</MenuItem>
+                            <MenuItem value={101}>Больше 10</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
@@ -113,7 +144,22 @@ const Booking = () => {
                                variant="standard" />
                 </div>
 
-                <Button className={'btn'}>Забронировать</Button>
+                <Button className={'btn'} onClick={() => {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            restId: restId,
+                            date: startDate,
+                            time: startTime,
+                            duration: duration,
+                        })
+                    };
+
+                    fetch('http://localhost:8080/api/bookings', requestOptions)
+                        .then(res => console.log(res));
+
+                }}>Забронировать</Button>
 
 
             </div>
