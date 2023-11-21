@@ -4,9 +4,20 @@ const baseUrl = 'https://39cd-92-100-177-16.ngrok-free.app';
 const requestOptions = {
     headers: { 'ngrok-skip-browser-warning': 'anyValueHere' },
 };
+
+export function getRestaurantBookings(managerChatId, callback) {
+    fetch(`${baseUrl}/api/bookings?managerChatId=${managerChatId}&statuses=NEW,APPROVED`, requestOptions)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            callback(data);
+        }).catch((err) => {
+        console.log('catch request error');
+        console.log(err);
+    });
+}
+
 export function getRestaurants(callback) {
-
-
 
     fetch(`${baseUrl}/api/restaurants`, requestOptions)
         .then((res) => res.json())

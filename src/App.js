@@ -2,13 +2,12 @@ import './App.css';
 import React, {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
-import Button from "./components/Button/Button";
 import {Route, Routes} from 'react-router-dom'
 import RestaurantList from "./components/RestaurantList/RestaurantList";
-import Form from "./components/Form/Form";
 import MenuList from "./components/MenuList/MenuList";
-import Booking from "./components/Booking/Booking";
+import BookingForm from "./components/BookingForm/BookingForm";
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import BookingList from "./components/BookingList/BookingList";
 
 function App() {
     const {tg, onToggleButton} = useTelegram();
@@ -31,9 +30,9 @@ function App() {
             <Header/>
             <Routes>
                 <Route index element={<RestaurantList/>} />
-                <Route path={'form'} element={<Form/>} />
                 <Route path={'menu/:restId'} element={<MenuList/>} />
-                <Route path={'booking/:restId'} element={<Booking/>} />
+                <Route path={'booking/:restId'} element={<BookingForm/>} />
+                <Route path={'bookings'} element={<BookingList/>} />
             </Routes>
 
         </ThemeProvider>

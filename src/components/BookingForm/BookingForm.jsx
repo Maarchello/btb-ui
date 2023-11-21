@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './Booking.css';
+import './BookingForm.css';
 import '../../Common.css'
 
 import {useParams} from "react-router-dom";
@@ -12,7 +12,7 @@ import Button from "../Button/Button";
 import {doBooking, getRestaurantById} from "../../service/ApiService";
 import {useTelegram} from "../../hooks/useTelegram";
 
-const Booking = () => {
+const BookingForm = () => {
 
     const {restId} = useParams();
     const {tg, user, onClose} = useTelegram();
@@ -131,7 +131,7 @@ const Booking = () => {
                 </div>
 
                 <div>
-                    <TextField value={clientName}
+                    <TextField required={true} value={clientName}
                                onChange={(v) => setClientName(v.target.value)} fullWidth={true} id="standard-basic"
                                label="Введите ваше имя"
                                variant="standard" />
@@ -155,7 +155,6 @@ const Booking = () => {
                         guestCount: guestCount
                     };
 
-                    console.log(requestBody);
                     doBooking(requestBody, onClose);
 
                 }}>Забронировать</Button>
@@ -167,4 +166,4 @@ const Booking = () => {
     );
 };
 
-export default Booking;
+export default BookingForm;
