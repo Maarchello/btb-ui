@@ -22,6 +22,7 @@ const Booking = () => {
     const [duration, setDuration] = useState(null);
     const [guestCount, setGuestCount] = useState(null);
     const [comment, setComment] = useState(null);
+    const [clientName, setClientName] = useState(user?.username === undefined ? null : user?.username)
     const [checked, setChecked] = useState(false);
 
     const [rest, setRest] = useState({address: {}});
@@ -129,7 +130,12 @@ const Booking = () => {
                     </FormControl>
                 </div>
 
-
+                <div>
+                    <TextField value={clientName}
+                               onChange={(v) => setClientName(v.target.value)} fullWidth={true} id="standard-basic"
+                               label="Введите ваше имя"
+                               variant="standard" />
+                </div>
 
                 <div>
                     <TextField onChange={(v) => setComment(v.target.value)} fullWidth={true} id="standard-basic"
@@ -140,6 +146,7 @@ const Booking = () => {
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
                         chatId: user?.id,
+                        clientName: clientName,
                         restaurantId: restId,
                         day: startDate,
                         time: startTime,
