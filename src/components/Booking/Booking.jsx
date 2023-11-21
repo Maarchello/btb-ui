@@ -15,6 +15,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Booking = () => {
 
     const {restId} = useParams();
+    const {tg, user, onClose} = useTelegram();
 
 
     const [startDate, setStartDate] = useState(new Date());
@@ -22,7 +23,7 @@ const Booking = () => {
     const [duration, setDuration] = useState(null);
     const [guestCount, setGuestCount] = useState(null);
     const [comment, setComment] = useState(null);
-    const [clientName, setClientName] = useState(user?.username === undefined ? null : user?.username)
+    const [clientName, setClientName] = useState(user?.first_name === undefined ? null : user?.first_name)
     const [checked, setChecked] = useState(false);
 
     const [rest, setRest] = useState({address: {}});
@@ -30,7 +31,6 @@ const Booking = () => {
         setChecked(!checked);
     };
 
-    const {tg, user, onClose} = useTelegram();
 
     useEffect(() => {
         getRestaurantById(restId, (data) => setRest(data))
