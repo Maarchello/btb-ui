@@ -5,3 +5,8 @@
     justify-content: center;
     gap: 20px;
 }
+
+.filters {
+    display: flex;
+    flex-direction: row;
+}

@@ -5,8 +5,18 @@ const requestOptions = {
     headers: { 'ngrok-skip-browser-warning': 'anyValueHere' },
 };
 
-export function getRestaurantBookings(managerChatId, callback) {
-    fetch(`${baseUrl}/api/bookings?managerChatId=${managerChatId}&statuses=NEW,APPROVED`, requestOptions)
+function getFormattedDate(date) {
+    let day = date.getDate();
+    let month = date.getUTCMonth() + 1;
+    let year = date.getUTCFullYear();
+    return  year + '-' + month + '-' + day;
+}
+
+export function getRestaurantBookings(managerChatId, date, callback) {
+
+    let formattedDate = getFormattedDate(date);
+
+    fetch(`${baseUrl}/api/bookings?managerChatId=${managerChatId}&day=${formattedDate}&statuses=NEW,APPROVED`, requestOptions)
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
@@ -53,7 +63,6 @@ export function getMenuItems(restaurantId, callback) {
 
 export function doBooking(requestBody, callback) {
     let json = JSON.stringify(requestBody);
-    console.log(json);
 
     const requestOptions = {
         method: 'POST',
