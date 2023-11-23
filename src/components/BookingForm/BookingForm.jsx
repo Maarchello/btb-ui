@@ -11,11 +11,12 @@ import {FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, 
 import Button from "../Button/Button";
 import {doBooking, getRestaurantById} from "../../service/ApiService";
 import {useTelegram} from "../../hooks/useTelegram";
+import {getFormattedDate, getFormattedTime} from "../../service/Utils";
 
 const BookingForm = () => {
 
     const {restId} = useParams();
-    const {tg, user, onClose} = useTelegram();
+    const {user, onClose} = useTelegram();
 
 
     const [startDate, setStartDate] = useState(new Date());
@@ -62,12 +63,15 @@ const BookingForm = () => {
                 <div className={'booking-date'}>
 
                     <MobileDatePicker format={'DD-MM-YYYY'}
-                                      onChange={(d) => setStartDate(d)}
+                                      onChange={(d) => setStartDate(new Date(d))}
                                       disablePast={true}
                                       slotProps={{textField: {size: 'small'}}}
                                       label={'Выберите день'}/>
 
-                    <MobileTimePicker onChange={(t) => setStartTime(t)}
+                    <MobileTimePicker onChange={(t) => {
+                        console.log(t);
+                        setStartTime(new Date(t));
+                    }}
                                       // minTime={dayjs().set('hour', 12).set('minute', 0)}
                                       // maxTime={dayjs().set('hour', 23).set('minute', 59)}
                                       label={'Выберите время начала'}
@@ -148,8 +152,8 @@ const BookingForm = () => {
                         chatId: user?.id,
                         clientName: clientName,
                         restaurantId: restId,
-                        day: startDate,
-                        time: startTime,
+                        day: getFormattedDate(startDate),
+                        time: getFormattedTime(startTime),
                         duration: duration,
                         comment: comment,
                         guestCount: guestCount

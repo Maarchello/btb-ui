@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getRestaurantBookings} from "../../service/ApiService";
 import {useTelegram} from "../../hooks/useTelegram";
-import {CircularProgress, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {CircularProgress} from "@mui/material";
 import '../../Common.css';
 import './BookingList.css';
 import BookingItem from "./BookingItem/BookingItem";
@@ -10,8 +10,7 @@ import {ruRU} from "@mui/x-date-pickers/locales";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/ru";
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-dayjs.extend(utc);
+import {getFormattedDate} from "../../service/Utils";
 
 const BookingList = () => {
 
@@ -22,7 +21,7 @@ const BookingList = () => {
 
 
     useEffect(() => {
-        getRestaurantBookings(user?.id, date,(data) => setBookings(data))
+        getRestaurantBookings(user?.id, getFormattedDate(date),(data) => setBookings(data))
     }, [date]);
 
     return (
