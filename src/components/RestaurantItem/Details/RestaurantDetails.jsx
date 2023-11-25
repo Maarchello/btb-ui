@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import ImageSlider from "../../ImageSlider/ImageSlider";
-import {Button, CardActions, CardContent, Typography} from "@mui/material";
+import {CardContent, Typography} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {getRestaurantById} from "../../../service/ApiService";
+import {useTelegram} from "../../../hooks/useTelegram";
 
 const images = [
     {
@@ -28,6 +29,7 @@ const images = [
 ];
 const RestaurantDetails = () => {
 
+    const {tg} = useTelegram();
     const { restId} = useParams();
     let navigate = useNavigate();
 
@@ -40,11 +42,15 @@ const RestaurantDetails = () => {
 
     const [restaurant, setRestaurant] = useState({});
 
+    // useEffect(() => {
+    //     tg.MainButton.setParams({
+    //         text: 'Забронировать'
+    //     })
+    // })
+
     useEffect(() => {
         getRestaurantById(restId, (data) => setRestaurant(data))
     }, []);
-
-    // const restaurant = state.restaurant;
 
     return (
         <div className={'main'}>
@@ -57,7 +63,7 @@ const RestaurantDetails = () => {
                     <span>📍 {restaurant?.address?.fullStreet}</span><br/>
                     ⭐ {restaurant?.rating}<br/>
                     💸 Средний чек {restaurant?.averageBill} ₽<br/>
-                    <a href={"tel:" + restaurant?.phone}>{restaurant?.phone}</a>
+                    <span><b>{restaurant?.phone}</b></span>
                 </Typography>
 
                 <Typography gutterBottom variant="h6" component="div">
@@ -68,10 +74,10 @@ const RestaurantDetails = () => {
                     {restaurant?.description}
                 </Typography>
 
-                <CardActions disableSpacing fullWidth>
-                    <Button size="small" onClick={onMenuHandler}>Меню</Button>
-                    <Button size="small" onClick={onBookHandler}>Забронировать</Button>
-                </CardActions>
+                {/*<CardActions disableSpacing fullWidth>*/}
+                {/*    <Button size="small" onClick={onMenuHandler}>Меню</Button>*/}
+                {/*    <Button size="small" onClick={onBookHandler}>Забронировать</Button>*/}
+                {/*</CardActions>*/}
 
             </CardContent>
         </div>
