@@ -8,6 +8,7 @@ import MenuList from "./components/MenuList/MenuList";
 import BookingForm from "./components/BookingForm/BookingForm";
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import BookingList from "./components/BookingList/BookingList";
+import RestaurantDetails from "./components/RestaurantItem/Details/RestaurantDetails";
 
 function App() {
     const {tg, onToggleButton} = useTelegram();
@@ -33,6 +34,7 @@ function App() {
                 <Route path={'menu/:restId'} element={<MenuList/>} />
                 <Route path={'booking/:restId'} element={<BookingForm/>} />
                 <Route path={'bookings'} element={<BookingList/>} />
+                <Route path={'restaurant/:restId/details'} element={<RestaurantDetails />} />
             </Routes>
 
         </ThemeProvider>

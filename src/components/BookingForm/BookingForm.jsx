@@ -46,8 +46,8 @@ const BookingForm = () => {
             <div className={`container main`}>
                 <div className={'b1'}>
                     <img
-                        src={rest.photo}
-                        width={'100px'} height={'100px'}/>
+                        src={rest?.photos}
+                        width={'100px'} />
 
                     <div className={'name-and-street'}>
 

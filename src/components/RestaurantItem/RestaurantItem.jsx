@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import './RestaurantItem.css'
 import '../../Common.css'
 
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useTelegram} from "../../hooks/useTelegram";
+// import {ExpandMore} from "@mui/icons-material";
 import {
     Button,
     Card,
@@ -12,12 +13,11 @@ import {
     CardMedia,
     Collapse,
     IconButton,
+    IconButtonProps,
     styled,
     Typography
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import {ExpandMore} from "@mui/icons-material";
-import {IconButtonProps} from "@mui/material";
 import {getRestaurantLocation} from "../../service/ApiService";
 
 
@@ -41,6 +41,9 @@ const RestaurantItem = ({restaurant, className}) => {
     const navigate = useNavigate();
     const {onClose, user} = useTelegram();
 
+    const onDetailsHandler = () => {
+        navigate(`/restaurant/${restaurant.id}/details`);
+    }
     const onMenuHandler = () => {
         navigate(`/menu/${restaurant.id}`);
     }
@@ -79,6 +82,7 @@ const RestaurantItem = ({restaurant, className}) => {
                 </CardContent>
                 <CardActions disableSpacing>
                             <Button size="small" onClick={onMenuHandler}>Меню</Button>
+                            <Button size="small" onClick={onDetailsHandler}>Подробнее</Button>
                             <Button size="small" onClick={onBookHandler}>Забронировать</Button>
                     <ExpandMore
                         expand={expanded}

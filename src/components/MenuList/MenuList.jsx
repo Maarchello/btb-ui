@@ -3,7 +3,7 @@ import './MenuList.css'
 import '../../Common.css'
 
 import MenuItem from "../MenuItem/MenuItem";
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {getMenuItems} from "../../service/ApiService";
 import {Box, Tab, Tabs, Typography} from "@mui/material";
 
@@ -42,7 +42,6 @@ const MenuList = () => {
     const [categories, setCategories] = useState([]);
 
     const handleChange = (event, newValue) => {
-        console.log(newValue)
         setValue(newValue);
     };
 
