@@ -25,6 +25,7 @@ const BookingForm = () => {
     const [guestCount, setGuestCount] = useState(null);
     const [comment, setComment] = useState(null);
     const [clientName, setClientName] = useState(user?.first_name === undefined ? null : user?.first_name)
+    const [clientPhone, setClientPhone] = useState();
     const [checked, setChecked] = useState(false);
 
     const [rest, setRest] = useState({address: {}});
@@ -142,6 +143,13 @@ const BookingForm = () => {
                 </div>
 
                 <div>
+                    <TextField value={clientPhone}
+                               onChange={(v) => setClientPhone(v.target.value)} fullWidth={true} id="standard-basic"
+                               label="Оставьте номер телефона"
+                               variant="standard" />
+                </div>
+
+                <div>
                     <TextField onChange={(v) => setComment(v.target.value)} fullWidth={true} id="standard-basic"
                                label="Напишите, что важно учесть"
                                variant="standard" />
@@ -149,8 +157,10 @@ const BookingForm = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        chatId: user?.id,
+                        chatId: 170474633,
+                        // chatId: user?.id,
                         clientName: clientName,
+                        clientPhone: clientPhone,
                         restaurantId: restId,
                         day: getFormattedDate(startDate),
                         time: getFormattedTime(startTime),
