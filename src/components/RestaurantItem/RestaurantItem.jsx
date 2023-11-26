@@ -60,7 +60,7 @@ const RestaurantItem = ({restaurant, className}) => {
     return (
 
         <div>
-            <Card>
+            <Card sx={{ minWidth: 350 }}>
                     <CardMedia
                         component="img"
                         height="140"
