@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ImageSlider from "../../ImageSlider/ImageSlider";
+import ImageSlider from "../../Provision/ImageSlider/ImageSlider";
 import {CardContent, Typography} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {getRestaurantById} from "../../../service/ApiService";

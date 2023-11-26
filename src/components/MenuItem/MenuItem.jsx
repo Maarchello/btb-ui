@@ -6,7 +6,8 @@ const MenuItem = ({menuItem, className}) => {
 
     return (
         <div>
-            <Card sx={{ minWidth: 300 }}>
+
+            <Card sx={{ minWidth: 350 }}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -24,12 +25,6 @@ const MenuItem = ({menuItem, className}) => {
                 </CardContent>
             </Card>
         </div>
-
-        // <div className={`item-${tg.colorScheme} ` + className}>
-        //     <img src={menuItem.photo} className={'img'} /><br/>
-        //     <div className={'item-name font-face-hussar'}>{menuItem.name}</div><br/>
-        //     <div className={'price'}>{menuItem.price} ₽</div>
-        // </div>
     );
 };
 

@@ -19,7 +19,7 @@ function CustomTabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p: 0 }}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -61,7 +61,7 @@ const MenuList = () => {
     return (
 
         <div className={'main'}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ marginBottom: 2, borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="scrollable">
 
                     {
