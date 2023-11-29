@@ -75,7 +75,7 @@ const BookingForm = () => {
                                       // minTime={dayjs().set('hour', 12).set('minute', 0)}
                                       // maxTime={dayjs().set('hour', 23).set('minute', 59)}
                                       label={'Выберите время начала'}
-                                      ampm={true}
+                                      ampm={false}
                                       slotProps={{textField: {size: 'small'}}}/>
                 </div>
 
@@ -156,8 +156,8 @@ const BookingForm = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        // chatId: 170474633,
-                        chatId: user?.id,
+                        chatId: 170474633,
+                        // chatId: user?.id,
                         clientName: clientName,
                         clientPhone: clientPhone,
                         restaurantId: restId,
