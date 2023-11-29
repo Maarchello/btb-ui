@@ -3,7 +3,7 @@ import './BookingForm.css';
 import '../../Common.css'
 
 import {useParams} from "react-router-dom";
-import {LocalizationProvider, MobileDatePicker, MobileTimePicker} from "@mui/x-date-pickers";
+import {DesktopTimePicker, LocalizationProvider, MobileDatePicker} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {ruRU} from '@mui/x-date-pickers/locales';
 import "dayjs/locale/ru";
@@ -69,7 +69,7 @@ const BookingForm = () => {
                                       slotProps={{textField: {size: 'small'}}}
                                       label={'Выберите день'}/>
 
-                    <MobileTimePicker onChange={(t) => {
+                    <DesktopTimePicker onChange={(t) => {
                         console.log(t);
                         setStartTime(new Date(t));
                     }}
