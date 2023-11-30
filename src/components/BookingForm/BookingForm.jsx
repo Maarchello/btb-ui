@@ -75,7 +75,7 @@ const BookingForm = () => {
                                       // minTime={dayjs().set('hour', 12).set('minute', 0)}
                                       // maxTime={dayjs().set('hour', 23).set('minute', 59)}
                                       label={'Выберите время начала'}
-                                      ampm={false}
+                                      ampm={true}
                                       slotProps={{textField: {size: 'small'}}}/>
                 </div>
 
