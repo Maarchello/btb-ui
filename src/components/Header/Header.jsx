@@ -10,7 +10,11 @@ const Header = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const onBack = () => {
-        navigate(-1);
+        if (window.history.state && window.history.state.idx > 0) {
+            navigate(-1);
+        } else {
+            navigate('/', {replace: true})
+        }
     }
 
     let isMainLocation = location.pathname === `/`;
