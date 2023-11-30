@@ -156,8 +156,7 @@ const BookingForm = () => {
 
                 <Button className={'btn'} onClick={() => {
                     const requestBody = {
-                        chatId: 170474633,
-                        // chatId: user?.id,
+                        chatId: user?.id,
                         clientName: clientName,
                         clientPhone: clientPhone,
                         restaurantId: restId,
