@@ -154,7 +154,7 @@ const BookingForm = () => {
                                variant="standard" />
                 </div>
 
-                <Button className={'btn'} onClick={() => {
+                <Button onClick={() => {
                     const requestBody = {
                         chatId: user?.id,
                         clientName: clientName,

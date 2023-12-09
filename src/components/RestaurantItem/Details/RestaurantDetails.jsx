@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ImageSlider from "../../Provision/ImageSlider/ImageSlider";
-import {CardContent, Typography} from "@mui/material";
+import {Button, CardActions, CardContent, Typography} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {getRestaurantById} from "../../../service/ApiService";
 import {useTelegram} from "../../../hooks/useTelegram";
@@ -74,10 +74,11 @@ const RestaurantDetails = () => {
                     {restaurant?.description}
                 </Typography>
 
-                {/*<CardActions disableSpacing fullWidth>*/}
-                {/*    <Button size="small" onClick={onMenuHandler}>Меню</Button>*/}
-                {/*    <Button size="small" onClick={onBookHandler}>Забронировать</Button>*/}
-                {/*</CardActions>*/}
+
+                <CardActions style={{justifyContent: 'center'}} disableSpacing fullWidth>
+                    {/*<Button size="small" onClick={onMenuHandler}>Меню</Button>*/}
+                    <Button onClick={onBookHandler}>Забронировать</Button>
+                </CardActions>
 
             </CardContent>
         </div>
