@@ -15,8 +15,12 @@ const MenuItem = ({menuItem, className}) => {
                     alt="menuItem.name"
                 />
                 <CardContent>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography variant="h6" color="text.primary">
                         {menuItem.name}
+                    </Typography>
+
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {menuItem.description}
                     </Typography>
 
                     <Typography variant="body1" className={'price'}>

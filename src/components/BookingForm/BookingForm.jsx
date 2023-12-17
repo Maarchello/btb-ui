@@ -28,14 +28,16 @@ const BookingForm = () => {
     const [clientPhone, setClientPhone] = useState();
     const [checked, setChecked] = useState(false);
 
-    const [rest, setRest] = useState({address: {}});
+    const [rest, setRest] = useState({address: {}, photos: []});
     const handleChange = () => {
         setChecked(!checked);
     };
 
 
     useEffect(() => {
-        getRestaurantById(restId, (data) => setRest(data))
+        getRestaurantById(restId, (data) => {
+            setRest(data);
+        })
     }, []);
 
 
@@ -47,7 +49,7 @@ const BookingForm = () => {
             <div className={`container main`}>
                 <div className={'b1'}>
                     <img
-                        src={rest?.photos}
+                        src={rest?.photos[0]}
                         width={'100px'} />
 
                     <div className={'name-and-street'}>
