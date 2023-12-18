@@ -4,13 +4,13 @@ import '../../Common.css'
 
 import {useNavigate} from 'react-router-dom';
 import {useTelegram} from "../../hooks/useTelegram";
-// import {ExpandMore} from "@mui/icons-material";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import {
     Button,
     Card,
     CardActions,
     CardContent,
-    CardMedia,
+    CardMedia, Collapse,
     IconButton,
     IconButtonProps,
     styled,
@@ -82,21 +82,24 @@ const RestaurantItem = ({restaurant, className}) => {
                             <Button size="small" onClick={onMenuHandler}>Меню</Button>
                             <Button size="small" onClick={onDetailsHandler}>Подробнее</Button>
                             <Button size="small" onClick={onBookHandler}>Забронировать</Button>
-                    {/*<ExpandMore*/}
-                    {/*    expand={expanded}*/}
-                    {/*    onClick={handleExpandClick}*/}
-                    {/*    aria-expanded={expanded}*/}
-                    {/*    aria-label="show more">*/}
-                    {/*    <ExpandMoreIcon />*/}
-                    {/*</ExpandMore>*/}
+                    <ExpandMore
+                        expand={expanded}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more">
+
+                        <AttachMoneyIcon />
+                    </ExpandMore>
+
                 </CardActions>
-                {/*<Collapse in={expanded} timeout="auto" unmountOnExit>*/}
-                {/*    <CardContent>*/}
-                {/*        <Typography paragraph>*/}
-                {/*            {restaurant.description}*/}
-                {/*        </Typography>*/}
-                {/*    </CardContent>*/}
-                {/*</Collapse>*/}
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <Typography paragraph>
+                            <div dangerouslySetInnerHTML={{__html: restaurant.discount}}></div>
+                        </Typography>
+                    </CardContent>
+                </Collapse>
+
             </Card>
 
         </div>
