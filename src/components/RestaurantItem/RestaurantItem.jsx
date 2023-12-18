@@ -4,7 +4,8 @@ import '../../Common.css'
 
 import {useNavigate} from 'react-router-dom';
 import {useTelegram} from "../../hooks/useTelegram";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import {
     Button,
     Card,
@@ -49,7 +50,7 @@ const RestaurantItem = ({restaurant, className}) => {
         navigate(`/booking/${restaurant.id}`);
     }
 
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -88,7 +89,7 @@ const RestaurantItem = ({restaurant, className}) => {
                         aria-expanded={expanded}
                         aria-label="show more">
 
-                        <AttachMoneyIcon />
+                        <ExpandMoreIcon />
                     </ExpandMore>
 
                 </CardActions>
