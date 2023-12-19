@@ -57,7 +57,7 @@ const BookingForm = () => {
                         <div className={'bold'}>{rest.name}</div>
                         <div>{rest.address.city}, {rest.address.fullStreet}</div>
                         <div>Ⓜ️️{rest.nearMetro}</div>
-                        <div><strong>Время работы</strong> {rest.openingHours}</div>
+                        <div><strong>Время работы:</strong><br/> <span dangerouslySetInnerHTML={{__html: rest.openingHours}}></span></div>
 
                     </div>
 
